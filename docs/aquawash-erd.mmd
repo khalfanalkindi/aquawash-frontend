@@ -1,0 +1,324 @@
+%% AquaWash — Full Entity Relationship Diagram
+%% Apps: rbac | common | catalog | operations | sales
+%% Export: open https://mermaid.live → paste this file → PNG/SVG/PDF
+
+erDiagram
+
+    %% ═══════════════════════════════════════════════════════════════
+    %% 1. RBAC — Users, Roles & Permissions
+    %% ═══════════════════════════════════════════════════════════════
+
+    roles {
+        bigint id PK
+        varchar code UK "admin|manager|cashier|holder"
+        varchar name
+        varchar description
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    permissions {
+        bigint id PK
+        varchar code UK "e.g. invoices.create"
+        varchar name
+        varchar module
+        varchar description
+        boolean is_active
+        datetime created_at
+    }
+
+    users {
+        bigint id PK
+        varchar username UK
+        varchar password "hashed — Django auth"
+        varchar full_name
+        bigint role_id FK "nullable"
+        boolean is_active
+        boolean is_staff
+        datetime last_login
+        datetime created_at
+        datetime updated_at
+    }
+
+    role_permissions {
+        bigint id PK
+        bigint role_id FK
+        bigint permission_id FK
+    }
+
+    user_permissions {
+        bigint id PK
+        bigint user_id FK
+        bigint permission_id FK
+    }
+
+    %% ═══════════════════════════════════════════════════════════════
+    %% 2. COMMON — Lists, Shop Settings, Audit
+    %% ═══════════════════════════════════════════════════════════════
+
+    list_parents {
+        bigint id PK
+        varchar code UK "e.g. invoice_status"
+        varchar name
+        varchar description
+        boolean is_active
+        datetime created_at
+    }
+
+    list_children {
+        bigint id PK
+        bigint parent_id FK
+        varchar code "e.g. pending, cash"
+        varchar name
+        varchar name_ar
+        int sort_order
+        boolean is_active
+        datetime created_at
+    }
+
+    shop_settings {
+        bigint id PK
+        varchar shop_name
+        varchar shop_name_ar
+        varchar tagline
+        varchar phone
+        varchar address
+        varchar currency "OMR"
+        varchar invoice_prefix "INV"
+        text receipt_footer
+        datetime updated_at
+    }
+
+    audit_log {
+        bigint id PK
+        bigint user_id FK "nullable"
+        varchar action "create|update|delete"
+        varchar entity_type "product|invoice|user"
+        bigint entity_id
+        json old_values
+        json new_values
+        varchar ip_address
+        datetime created_at
+    }
+
+    %% ═══════════════════════════════════════════════════════════════
+    %% 3. CATALOG — Garment Types, Services, Products
+    %% ═══════════════════════════════════════════════════════════════
+
+    entities {
+        bigint id PK
+        varchar name
+        varchar name_ar
+        bigint category_id FK "nullable — list_children"
+        varchar description
+        varchar icon
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    laundry_services {
+        bigint id PK
+        varchar name
+        varchar name_ar
+        varchar description
+        int duration_minutes "nullable"
+        varchar icon
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    products {
+        bigint id PK
+        bigint entity_id FK
+        bigint service_id FK
+        varchar name
+        varchar name_ar
+        decimal price "10,3 OMR"
+        varchar icon
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    %% ═══════════════════════════════════════════════════════════════
+    %% 4. OPERATIONS — Branches, Inventory, Stakeholders, Contracts
+    %% ═══════════════════════════════════════════════════════════════
+
+    branches {
+        bigint id PK
+        varchar name
+        varchar name_ar
+        varchar code UK
+        varchar address
+        varchar phone
+        boolean is_active
+        datetime created_at
+    }
+
+    user_branches {
+        bigint id PK
+        bigint user_id FK
+        bigint branch_id FK
+        boolean is_default
+    }
+
+    stock_items {
+        bigint id PK
+        varchar name
+        varchar name_ar
+        varchar sku UK
+        varchar category "equipment|consumable|spare_part"
+        varchar unit
+        int min_quantity "nullable"
+        boolean is_active
+    }
+
+    inventory {
+        bigint id PK
+        bigint branch_id FK
+        bigint stock_item_id FK
+        int quantity
+        datetime updated_at
+    }
+
+    stakeholders {
+        bigint id PK
+        varchar type "supplier|driver|partner|other"
+        varchar name
+        varchar name_ar
+        varchar phone
+        varchar email
+        varchar contact_person
+        varchar address
+        varchar tax_id
+        text notes
+        boolean is_active
+        datetime created_at
+    }
+
+    contracts {
+        bigint id PK
+        varchar contract_number UK
+        varchar party_type "customer|stakeholder"
+        bigint customer_id FK "nullable — when party_type=customer"
+        bigint stakeholder_id FK "nullable — when party_type=stakeholder"
+        bigint branch_id FK
+        varchar purpose "laundry|supply|maintenance|logistics|other"
+        varchar title
+        date start_date
+        date end_date "nullable — open-ended"
+        varchar status "draft|active|expired|terminated"
+        decimal monthly_value "10,3 nullable"
+        text terms
+        text notes
+        datetime created_at
+    }
+
+    %% ═══════════════════════════════════════════════════════════════
+    %% 5. SALES — Customers, Invoices, Payments
+    %% ═══════════════════════════════════════════════════════════════
+
+    customers {
+        bigint id PK
+        varchar type "individual|company"
+        varchar name
+        varchar name_ar
+        varchar phone
+        varchar email
+        varchar contact_person
+        varchar address
+        varchar tax_id
+        text notes
+        datetime created_at
+        datetime updated_at
+    }
+
+    invoices {
+        bigint id PK
+        varchar invoice_number UK
+        bigint branch_id FK "nullable"
+        bigint customer_id FK "nullable walk-in"
+        varchar customer_name "snapshot"
+        varchar customer_phone "snapshot"
+        varchar order_tag "e.g. A-101"
+        decimal subtotal "10,3"
+        decimal discount "10,3"
+        decimal total "10,3"
+        bigint status_id FK "list_children"
+        bigint payment_status_id FK "list_children"
+        varchar payment_method "cash|card|transfer"
+        text notes
+        bigint created_by FK "users"
+        datetime created_at
+        datetime updated_at
+    }
+
+    invoice_items {
+        bigint id PK
+        bigint invoice_id FK
+        bigint product_id FK "nullable if deleted"
+        varchar product_name "snapshot"
+        int quantity
+        decimal unit_price "10,3 snapshot"
+        decimal line_discount "10,3"
+        decimal total_price "10,3"
+    }
+
+    payments {
+        bigint id PK
+        bigint invoice_id FK
+        decimal amount "10,3"
+        bigint method_id FK "list_children cash|card|transfer"
+        bigint status_id FK "list_children"
+        varchar reference "txn or transfer ref"
+        text notes
+        bigint created_by FK "users"
+        datetime paid_at
+        datetime created_at
+    }
+
+    %% ─── RBAC relationships ───────────────────────────────────────
+
+    roles ||--o{ users : "assigns"
+    roles ||--|{ role_permissions : "has"
+    permissions ||--|{ role_permissions : "granted via"
+    users ||--|{ user_permissions : "extra grants"
+    permissions ||--|{ user_permissions : "granted via"
+
+    %% ─── COMMON relationships ─────────────────────────────────────
+
+    list_parents ||--|{ list_children : "contains"
+    users ||--o{ audit_log : "performed_by"
+
+    %% ─── CATALOG relationships ──────────────────────────────────────
+
+    list_children ||--o{ entities : "category"
+    entities ||--o{ products : "entity"
+    laundry_services ||--o{ products : "service"
+
+    %% ─── OPERATIONS relationships ───────────────────────────────────
+
+    users ||--|{ user_branches : "assigned to"
+    branches ||--|{ user_branches : "has users"
+    branches ||--|{ inventory : "stocks"
+    stock_items ||--|{ inventory : "tracked in"
+    branches ||--o{ contracts : "scoped to"
+    customers ||--o{ contracts : "party (laundry)"
+    stakeholders ||--o{ contracts : "party (supply/logistics)"
+
+    %% ─── SALES relationships ────────────────────────────────────────
+
+    branches ||--o{ invoices : "issued at"
+    customers ||--o{ invoices : "places"
+    users ||--o{ invoices : "created_by"
+    list_children ||--o{ invoices : "order_status"
+    list_children ||--o{ invoices : "payment_status"
+    invoices ||--|{ invoice_items : "contains"
+    products ||--o{ invoice_items : "references"
+    invoices ||--o{ payments : "receives"
+    list_children ||--o{ payments : "method"
+    list_children ||--o{ payments : "payment_status"
+    users ||--o{ payments : "recorded_by"
