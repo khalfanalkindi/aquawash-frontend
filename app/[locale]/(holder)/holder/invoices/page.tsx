@@ -64,7 +64,7 @@ export default function HolderInvoicesPage() {
     <div className="flex h-full flex-col">
       <div className="border-b border-border bg-card/50 p-4">
         <div className="relative">
-          <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder={t('searchPlaceholder')}
             value={searchQuery}
@@ -75,7 +75,7 @@ export default function HolderInvoicesPage() {
             <Button
               variant="ghost"
               size="icon"
-              className="absolute end-1 top-1/2 size-8 -translate-y-1/2"
+              className="absolute inset-e-1 top-1/2 size-8 -translate-y-1/2"
               onClick={() => setSearchQuery('')}
             >
               <X className="size-4" />

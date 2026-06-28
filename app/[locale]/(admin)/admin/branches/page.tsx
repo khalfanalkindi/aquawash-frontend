@@ -80,7 +80,7 @@ export default function BranchesPage() {
       </div>
 
       <div className="relative max-w-sm">
-        <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input placeholder={tc('search')} value={search} onChange={(e) => setSearch(e.target.value)} className="ps-9" />
       </div>
 

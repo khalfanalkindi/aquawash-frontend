@@ -103,10 +103,10 @@ export default function CustomersPage() {
       </Tabs>
 
       <div className="relative max-w-sm">
-        <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input placeholder={t('searchPlaceholder')} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="ps-9" />
         {searchQuery && (
-          <Button variant="ghost" size="icon" className="absolute end-1 top-1/2 size-7 -translate-y-1/2" onClick={() => setSearchQuery('')}>
+          <Button variant="ghost" size="icon" className="absolute inset-e-1 top-1/2 size-7 -translate-y-1/2" onClick={() => setSearchQuery('')}>
             <X className="size-4" />
           </Button>
         )}

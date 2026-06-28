@@ -247,7 +247,7 @@ function HeaderContent() {
         <SidebarTrigger className="-ms-1" />
 
         <div className="relative ms-2 hidden sm:block">
-          <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder={`${tc("search")}...`}
             className="w-64 rounded-lg border-border bg-background ps-9"
@@ -267,7 +267,7 @@ function HeaderContent() {
                 className="relative rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
               >
                 <Bell className="size-5" />
-                <span className="absolute end-2 top-2 size-2 rounded-full bg-destructive" />
+                <span className="absolute inset-e-2 top-2 size-2 rounded-full bg-destructive" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="bottom">{t("notifications")}</TooltipContent>

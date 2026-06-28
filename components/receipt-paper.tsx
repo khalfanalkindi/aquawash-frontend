@@ -118,7 +118,7 @@ export const ReceiptPaper = forwardRef<HTMLDivElement, ReceiptPaperProps>(
           </div>
           {invoice.items.map((item) => (
             <div key={item.id} className="grid grid-cols-[minmax(0,1fr)_22px_36px_36px] gap-0.5 border-t border-dotted border-gray-300 py-1">
-              <span className="break-words pe-0.5">{item.productName}</span>
+              <span className="wrap-break-word pe-0.5">{item.productName}</span>
               <span className="text-center">{item.quantity}</span>
               <span className="text-end tabular-nums">{item.unitPrice.toFixed(3)}</span>
               <span className="text-end tabular-nums">{item.totalPrice.toFixed(3)}</span>

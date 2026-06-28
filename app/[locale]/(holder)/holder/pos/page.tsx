@@ -135,7 +135,7 @@ export default function HolderPOSPage() {
     <div className="flex h-[calc(100vh-8rem)] flex-col">
       <div className="space-y-2 border-b border-border bg-card/50 p-3">
         <div className="relative">
-          <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder={t('searchProducts')}
             value={searchQuery}
@@ -223,7 +223,7 @@ export default function HolderPOSPage() {
       {cart.length > 0 && (
         <Sheet open={cartOpen} onOpenChange={setCartOpen}>
           <SheetTrigger asChild>
-            <Button size="lg" className="fixed bottom-20 end-4 z-40 h-14 gap-3 rounded-full px-6 shadow-lg shadow-primary/30">
+            <Button size="lg" className="fixed bottom-20 inset-e-4 z-40 h-14 gap-3 rounded-full px-6 shadow-lg shadow-primary/30">
               <ShoppingCart className="size-5" />
               <span className="font-semibold">{total.toFixed(3)} OMR</span>
               <Badge variant="secondary" className="bg-primary-foreground/20 text-primary-foreground">{cartItemCount}</Badge>
@@ -248,7 +248,7 @@ export default function HolderPOSPage() {
                   </Button>
                 </div>
                 <div className="relative">
-                  <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                  <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     placeholder={t('searchCustomerPlaceholder')}
                     value={customerSearch}
@@ -257,7 +257,7 @@ export default function HolderPOSPage() {
                     className="h-9 ps-9"
                   />
                   {selectedCustomer && (
-                    <Button variant="ghost" size="icon" className="absolute end-1 top-1/2 size-7 -translate-y-1/2"
+                    <Button variant="ghost" size="icon" className="absolute inset-e-1 top-1/2 size-7 -translate-y-1/2"
                       onClick={() => { setSelectedCustomer(null); setCustomerSearch('') }}>
                       <X className="size-3" />
                     </Button>

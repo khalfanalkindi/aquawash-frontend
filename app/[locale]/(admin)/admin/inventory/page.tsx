@@ -98,7 +98,7 @@ export default function InventoryPage() {
         <TabsContent value="stock" className="space-y-4 mt-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="relative max-w-sm flex-1">
-              <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input placeholder={tc('search')} value={search} onChange={(e) => setSearch(e.target.value)} className="ps-9" />
             </div>
             <Button onClick={openAddItem} className="gap-2"><Plus className="size-4" />{t('addItem')}</Button>

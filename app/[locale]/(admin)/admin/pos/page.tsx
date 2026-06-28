@@ -358,7 +358,7 @@ export default function AdminPOSPage() {
       <div className="flex h-full flex-col overflow-hidden pr-4">
         <div className="mb-4 space-y-4">
           <div className="relative">
-            <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute inset-s-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder={t('searchProducts')}
               value={searchQuery}
@@ -448,7 +448,7 @@ export default function AdminPOSPage() {
 
       <Sheet open={cartOpen} onOpenChange={setCartOpen}>
         <SheetTrigger asChild>
-          <Button size="lg" className="fixed bottom-6 end-6 h-14 gap-2 rounded-full px-6 shadow-lg">
+          <Button size="lg" className="fixed bottom-6 inset-e-6 h-14 gap-2 rounded-full px-6 shadow-lg">
             <ShoppingCart className="size-5" />
             Cart
             {cartItemCount > 0 && (

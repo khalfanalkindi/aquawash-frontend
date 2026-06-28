@@ -74,7 +74,7 @@ export default function HolderLayout({ children }: { children: React.ReactNode }
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+      <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-backdrop-filter:bg-card/80">
         <div className="flex h-14 items-center justify-between px-4">
           <div className="flex items-center gap-3">
             <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -126,7 +126,7 @@ export default function HolderLayout({ children }: { children: React.ReactNode }
         <StoreHydrator>{children}</StoreHydrator>
       </main>
 
-      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/95 backdrop-blur supports-backdrop-filter:bg-card/80">
         <div className="flex h-16 items-center justify-around">
           {navItems.map((item) => {
             const isActive = pathname === item.href
@@ -148,7 +148,7 @@ export default function HolderLayout({ children }: { children: React.ReactNode }
                   </div>
                   <span
                     className={cn(
-                      'absolute -bottom-4 start-1/2 -translate-x-1/2 text-[10px] font-medium',
+                      'absolute -bottom-4 inset-s-1/2 -translate-x-1/2 text-[10px] font-medium',
                       isActive ? 'text-primary' : 'text-muted-foreground'
                     )}
                   >
