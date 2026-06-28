@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "sync:permissions": "python ../scripts/sync-permissions.py"
+    "sync:permissions": "python ../aquawash-backend/scripts/sync-permissions.py"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

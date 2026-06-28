@@ -60,7 +60,7 @@ export const dummyRoles: Role[] = [
   },
 ]
 
-// Permissions — synced from shared/permissions.json
+// Permissions — synced from aquawash-backend/shared/permissions.json
 export const dummyPermissions: Permission[] = PERMISSION_DEFINITIONS.map((perm, idx) => ({
   id: `perm-${idx + 1}`,
   code: perm.code,

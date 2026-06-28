@@ -379,7 +379,7 @@
     "registryTitle": "سجل الصلاحيات",
     "subtitle": "إدارة صلاحيات النظام والتحكم بالوصول",
     "readOnlySubtitle": "سجل صلاحيات النظام المعرفة في الـ backend",
-    "readOnlyNotice": "أكواد الصلاحيات معرّفة في shared/permissions.json وتُزرع في قاعدة البيانات.",
+    "readOnlyNotice": "أكواد الصلاحيات معرّفة في aquawash-backend/shared/permissions.json وتُزرع في قاعدة البيانات.",
     "registryBadge": "سجل النظام · {count} صلاحية",
     "assignHint": "عيّن الصلاحيات من صفحة صلاحيات الأدوار أو صلاحيات المستخدمين.",
     "addPermission": "إضافة صلاحية"

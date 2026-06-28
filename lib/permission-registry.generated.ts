@@ -1,4 +1,4 @@
-/** AUTO-GENERATED — run: python scripts/sync-permissions.py */
+/** AUTO-GENERATED — run: pnpm sync:permissions (from aquawash-frontend) */
 /* eslint-disable */
 
 export const PERMISSION_DEFINITIONS = [

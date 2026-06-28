@@ -167,7 +167,7 @@ export default function PermissionsPage() {
             <p>{t("readOnlyNotice")}</p>
             <p>{t("assignHint")}</p>
             <p className="font-mono text-xs text-foreground/70">
-              {PERMISSION_CODES.length} codes · shared/permissions.json
+              {PERMISSION_CODES.length} codes · aquawash-backend/shared/permissions.json
             </p>
           </CardContent>
         </Card>

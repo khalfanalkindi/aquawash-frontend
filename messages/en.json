@@ -379,7 +379,7 @@
     "registryTitle": "Permission Registry",
     "subtitle": "Manage system permissions and access controls",
     "readOnlySubtitle": "System-defined permission catalog from the backend registry",
-    "readOnlyNotice": "These permission codes are defined in shared/permissions.json and seeded into the database. To assign them, use Role Permissions or User Permissions.",
+    "readOnlyNotice": "These permission codes are defined in aquawash-backend/shared/permissions.json and seeded into the database. To assign them, use Role Permissions or User Permissions.",
     "registryBadge": "System registry · {count} permissions",
     "assignHint": "Assign permissions from Role Permissions or User Permissions.",
     "addPermission": "Add Permission"
