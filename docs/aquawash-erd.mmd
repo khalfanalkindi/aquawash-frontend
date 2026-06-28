@@ -224,6 +224,7 @@ erDiagram
     customers {
         bigint id PK
         varchar type "individual|company"
+        varchar custom_id "nullable — e.g. A-232, AAW"
         varchar name
         varchar name_ar
         varchar phone
