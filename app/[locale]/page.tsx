@@ -15,8 +15,8 @@ export default async function HomePage({
   const t = await getTranslations('home')
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background to-secondary">
-      <div className="absolute top-4 end-4">
+    <main className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-background to-secondary">
+      <div className="absolute top-4 inset-e-4">
         <LanguageSwitcher />
       </div>
 

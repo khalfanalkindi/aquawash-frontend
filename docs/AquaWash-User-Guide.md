@@ -4,9 +4,13 @@
 
 | | |
 |---|---|
-| **الإصدار / Version** | 1.0 |
-| **التاريخ / Date** | _________________ |
-| **إعداد / Prepared by** | _________________ |
+| **الإصدار / Version** | 1.1 |
+| **التاريخ / Date** | 18 يوليو 2026 / 18 July 2026 |
+| **البيئة / Environment** | نسخة تجريبية سحابية / Cloud Trial |
+| **إعداد / Prepared by** | AquaWash Team |
+
+> **رابط النظام | System URL:**
+> [https://aquawash-frontend-production.up.railway.app/ar](https://aquawash-frontend-production.up.railway.app/ar)
 
 ---
 
@@ -28,7 +32,7 @@
 
 ### العربية
 
-**AquaWash (أكواواش)** هو نظام متكامل لإدارة مغاسل الملابس وخدمات الغسيل والكي. يجمع بين **لوحة إدارة شاملة** للحاسوب والأجهزة اللوحية، و**نقطة بيع محمولة (Holder POS)** للاستخدام السريع على الهاتف أو الجهاز اللوحي في counter.
+**AquaWash (أكواواش)** هو نظام متكامل لإدارة مغاسل الملابس وخدمات الغسيل والكي. يجمع بين **لوحة إدارة شاملة** للحاسوب والأجهزة اللوحية، و**نقطة بيع محمولة (Holder POS)** للاستخدام السريع على الهاتف أو الجهاز اللوحي عند نقطة الاستلام.
 
 يدعم النظام **اللغتين العربية والإنجليزية**، و**تعدد الفروع**، و**إدارة العملاء والعقود والمخزون**، مع **صلاحيات مرنة** لكل مستخدم (مدير، كاشير، holder).
 
@@ -60,7 +64,7 @@ The system supports **Arabic and English**, **multi-branch operations**, **custo
 | **الفروع** | إدارة مواقع متعددة، ربط المستخدمين بالفروع، اختيار الفرع النشط في POS |
 | **المخزون** | أصناف (معدات، مواد استهلاكية، قطع غيار)، كميات لكل فرع |
 | **أصحاب المصلحة** | موردون، سائقون، شركاء — منفصلون عن العملاء |
-| **العقود** | عقود غسيل مع العملاء، أو توريد/صيانة/لوجistics مع أصحاب المصلحة |
+| **العقود** | عقود غسيل مع العملاء، أو توريد وصيانة وخدمات لوجستية مع أصحاب المصلحة |
 | **المستخدمون والصلاحيات** | أدوار (Admin, Manager, Cashier, Holder)، صلاحيات على مستوى الدور أو المستخدم |
 | **الإعدادات** | اسم المحل، العملة (OMR)، تذييل الإيصال، الوضع الداكن، تغيير كلمة المرور |
 | **Holder POS** | واجهة خفيفة: POS + الفواتير + تفعيل المنتجات |
@@ -92,7 +96,7 @@ The system supports **Arabic and English**, **multi-branch operations**, **custo
 
 1. **مصمم للمغاسل** — الكتالوج مبني على (نوع القطعة + الخدمة + السعر)، وليس نظام POS عام.
 2. **واجهتان في نظام واحد** — إدارة كاملة + POS محمول للكاشير في المحل.
-3. **عربي وإنجليزي** — واجهة وتبديل لغة فوري للمو staff والإدارة.
+3. **عربي وإنجليزي** — واجهة ثنائية اللغة مع تبديل فوري للموظفين والإدارة.
 4. **فروع متعددة** — كل فرع له فواتير ومخزون ومستخدمون معزولون حسب الصلاحية.
 5. **صلاحيات دقيقة** — الكاشير يرى ما يحتاجه فقط؛ المدير يتحكم بالعمليات والحسابات.
 6. **إيصالات احترافية** — فاتورة برقم طلب، فرع، عميل، خصومات، وجاهزة للطباعة 80mm أو PNG.
@@ -118,47 +122,101 @@ The system supports **Arabic and English**, **multi-branch operations**, **custo
 
 ### العربية
 
-| الدور | الاستخدام |
-|-------|-----------|
-| **Admin / Manager** | لوحة الإدارة الكاملة: فروع، مخزون، عقود، مستخدمون، تقارير |
-| **Cashier** | POS، فواتير، عملاء (حسب الصلاحيات) |
-| **Holder** | تطبيق Holder فقط: POS محمول، الفواتير، تفعيل المنتجات |
+| الدور | بوابة الإدارة | بوابة Holder | الصلاحيات الأساسية |
+|-------|---------------|---------------|-------------------|
+| **Admin** | نعم | نعم | وصول كامل لجميع وظائف النظام، بما فيها المستخدمون، الأدوار، الصلاحيات، الفروع، المخزون، العقود، التقارير، الكتالوج، الفواتير ونقطة البيع |
+| **Manager** | نعم | نعم | لوحة التحكم، إدارة وعرض الخدمات، إنشاء وتعديل الفواتير، التقارير والتصدير، عرض المستخدمين، نقطة البيع والخصومات |
+| **Cashier** | نعم، بصلاحيات محدودة | نعم | عرض الخدمات، إنشاء وعرض وطباعة الفواتير، واستخدام نقطة البيع دون صلاحيات الإدارة أو الخصم |
+| **Holder** | لا | نعم فقط | نقطة البيع المحمولة، عرض وإنشاء وطباعة الفواتير، وعرض وتفعيل أو إيقاف المنتجات |
 
 > الصلاحيات التفصيلية تُضبط من: **صلاحيات الأدوار** و**صلاحيات المستخدمين**.
+>
+> يمكن منح صلاحيات إضافية لمستخدم محدد من لوحة الإدارة دون تغيير صلاحيات بقية مستخدمي الدور.
 
 ---
 
 ### English
 
-| Role | Usage |
-|------|-------|
-| **Admin / Manager** | Full admin panel: branches, inventory, contracts, users, reports |
-| **Cashier** | POS, invoices, customers (as permitted) |
-| **Holder** | Holder app only: mobile POS, invoices, product toggles |
+| Role | Admin Portal | Holder Portal | Main Access |
+|------|--------------|---------------|-------------|
+| **Admin** | Yes | Yes | Full access, including users, roles, permissions, branches, inventory, contracts, reports, catalog, invoices, and POS |
+| **Manager** | Yes | Yes | Dashboard, service management, invoice creation/editing, reports/export, user viewing, POS, and discounts |
+| **Cashier** | Yes, limited | Yes | View services, create/view/print invoices, and use POS without administration or discount permissions |
+| **Holder** | No | Yes only | Mobile POS, view/create/print invoices, and view or toggle product availability |
 
 > Detailed access is configured under **Role Permissions** and **User Permissions**.
+>
+> Extra permissions can be granted to an individual user without changing the role for everyone else.
 
 ---
 
 ## 5. البدء السريع | Quick Start
 
+### 5.1 روابط النظام | System Links
+
+| الصفحة | العربية | English |
+|--------|---------|---------|
+| **الصفحة الرئيسية** | [فتح النظام بالعربية](https://aquawash-frontend-production.up.railway.app/ar) | [Open in English](https://aquawash-frontend-production.up.railway.app/en) |
+| **دخول الإدارة** | [لوحة الإدارة](https://aquawash-frontend-production.up.railway.app/ar/admin/login) | [Admin Login](https://aquawash-frontend-production.up.railway.app/en/admin/login) |
+| **دخول Holder** | [نقطة البيع المحمولة](https://aquawash-frontend-production.up.railway.app/ar/holder/login) | [Holder Login](https://aquawash-frontend-production.up.railway.app/en/holder/login) |
+
+### 5.2 حسابات النسخة التجريبية | Trial Accounts
+
+| الدور | اسم المستخدم | كلمة المرور | الاستخدام |
+|-------|---------------|-------------|-----------|
+| **مدير النظام / Admin** | `demo` | كلمة المرور المحدّثة والمسلّمة للعميل | تجربة جميع وظائف لوحة الإدارة وHolder |
+| **كاشير / Cashier** | `cashier1` | `cashier1` | تجربة نقطة البيع والفواتير في البوابتين |
+| **Holder** | `holder1` | `holder1` | تجربة بوابة Holder فقط |
+
+> **تنبيه أمني:** هذه حسابات مؤقتة مخصصة للتجربة. يجب تغيير كلمات المرور وإنشاء حسابات فعلية بأسماء الموظفين قبل بدء التشغيل الفعلي. لا تشارك بيانات الدخول خارج فريق العمل المخوّل.
+
+### 5.3 خطوات الدخول والاستخدام الأول | First Login
+
 ### العربية
 
-1. افتح رابط النظام (محلي أو سحابي).
+1. افتح [رابط النظام](https://aquawash-frontend-production.up.railway.app/ar).
 2. اختر **لوحة الإدارة** أو **Holder POS**.
 3. سجّل الدخول باسم المستخدم وكلمة المرور.
-4. (للمدير) اضبط **الفروع**، **الكتالوج**، **المستخدمين**.
-5. (للكاشير) اختر **الفرع** من أعلى الشاشة → افتح **نقطة البيع** → أنشئ الطلب → أكّد الدفع → اطبع الإيصال.
+4. اختر الفرع النشط من أعلى الشاشة إذا كان الحساب مرتبطًا بأكثر من فرع.
+5. (للمدير) راجع **الإعدادات**، ثم اضبط **الفروع**، **الكتالوج**، **المستخدمين والصلاحيات**.
+6. (للكاشير) افتح **نقطة البيع** → اختر المنتجات والخدمات → حدد العميل أو Walk-in → اختر طريقة الدفع → أكّد الطلب → اطبع الإيصال.
+7. (لـ Holder) استخدم الشريط السفلي للتنقل بين **الفواتير**، **نقطة البيع** و**تفعيل المنتجات**.
+8. عند الانتهاء، سجّل الخروج من قائمة المستخدم، خصوصًا عند استخدام جهاز مشترك.
 
 ---
 
 ### English
 
-1. Open the system URL (local or cloud).
+1. Open the [system URL](https://aquawash-frontend-production.up.railway.app/en).
 2. Choose **Admin Panel** or **Holder POS**.
 3. Sign in with username and password.
-4. (Admin) Configure **branches**, **catalog**, and **users**.
-5. (Cashier) Select **branch** from the header → open **POS** → build order → confirm payment → print receipt.
+4. Select the active branch from the header if the account is assigned to multiple branches.
+5. (Admin) Review **settings**, then configure **branches**, **catalog**, and **users & permissions**.
+6. (Cashier) Open **POS** → select products/services → choose a customer or walk-in → select payment method → confirm → print the receipt.
+7. (Holder) Use the bottom navigation for **invoices**, **POS**, and **product availability**.
+8. Sign out when finished, especially on a shared device.
+
+### 5.4 قائمة التحقق المقترحة للتجربة | Suggested Trial Checklist
+
+- تسجيل الدخول بالحسابات الثلاثة والتأكد من اختلاف الصلاحيات.
+- اختيار الفرع الصحيح قبل إنشاء أي عملية بيع.
+- إنشاء عميل فردي وعميل شركة وتجربة البحث بالاسم والهاتف ورقم العميل.
+- إنشاء فاتورة نقدية وأخرى بالبطاقة أو التحويل، ثم طباعة الإيصال.
+- البحث عن الفاتورة وتغيير حالتها ومراجعة تفاصيلها.
+- تفعيل وإيقاف منتج من بوابة Holder والتأكد من ظهوره في نقطة البيع.
+- مراجعة التقارير والمخزون والفروع والعقود بحساب المدير.
+- تجربة العربية والإنجليزية على الحاسوب والهاتف.
+- تسجيل أي ملاحظة مع اسم المستخدم، رابط الشاشة، وقت المشكلة، والخطوات التي سبقتها.
+
+- Sign in with all three accounts and verify their different permissions.
+- Select the correct branch before creating a sale.
+- Create individual and company customers, then test all search options.
+- Create cash and card/transfer invoices and print the receipt.
+- Find an invoice, update its status, and review its details.
+- Toggle a product through the Holder portal and verify its POS availability.
+- Review reports, inventory, branches, and contracts as Admin.
+- Test Arabic and English on both desktop and mobile.
+- Report issues with the username, screen URL, time, and reproduction steps.
 
 ---
 
@@ -494,6 +552,18 @@ The system supports **Arabic and English**, **multi-branch operations**, **custo
 **س: ماذا يعني Order Tag؟**  
 ج: رقم أو رمز للطلب (مثل A-101) يظهر على الإيصال لتسليم الملابس.
 
+**س: لا أستطيع فتح إحدى الشاشات، ما السبب؟**
+ج: ظهور الشاشات يعتمد على دور المستخدم وصلاحياته. تواصل مع مدير النظام لمراجعة صلاحيات الدور أو المستخدم.
+
+**س: لماذا لا يستطيع مستخدم Holder دخول لوحة الإدارة؟**
+ج: دور Holder مخصص للبوابة المحمولة فقط. يمكن للمدير والكاشير استخدام بوابة Holder، بينما لا يستطيع Holder دخول لوحة الإدارة.
+
+**س: ماذا أفعل إذا نسيت كلمة المرور؟**
+ج: تواصل مع مدير النظام لإعادة تعيين كلمة المرور. لا يمكن عرض كلمة المرور الحالية لأنها مخزنة بصورة مشفرة.
+
+**س: هل البيانات في النسخة التجريبية نهائية؟**
+ج: لا. بيانات النسخة الحالية مخصصة للاختبار وقد يتم تعديلها أو حذفها قبل التشغيل الفعلي.
+
 ---
 
 ### English
@@ -507,50 +577,58 @@ A: Search by name, phone, or custom customer ID (e.g. A-232).
 **Q: What is an Order Tag?**  
 A: A pickup reference (e.g. A-101) printed on the receipt for garment collection.
 
+**Q: Why can I not open a particular screen?**
+A: Screen access depends on the user's role and permissions. Ask an administrator to review the role or user permissions.
+
+**Q: Why can a Holder user not access the admin panel?**
+A: The Holder role is restricted to the mobile portal. Admin and Cashier users may use the Holder portal, but Holder users cannot enter the admin panel.
+
+**Q: What should I do if I forget my password?**
+A: Contact an administrator to reset it. Existing passwords cannot be displayed because they are stored securely as hashes.
+
+**Q: Is trial data permanent?**
+A: No. The current environment is for evaluation, and its data may be changed or removed before production launch.
+
 ---
 
 ## 9. التواصل والدعم | Contact & Support
 
-> **املأ البيانات التالية قبل التسليم للعميل.**  
-> **Fill in the fields below before sharing with your client.**
-
 ### العربية
 
-| | |
-|---|---|
-| **اسم الشركة** | _________________________________ |
-| **الشخص المسؤول** | _________________________________ |
-| **الهاتف** | _________________________________ |
-| **البريد الإلكتروني** | _________________________________ |
-| **الموقع / العنوان** | _________________________________ |
-| **ساعات الدعم** | _________________________________ |
-| **رابط النظام (Production)** | _________________________________ |
-| **رابط النظام (Demo / Staging)** | _________________________________ |
+للدعم والملاحظات، تواصل مع ممثل مشروع AquaWash عبر قناة التواصل المتفق عليها. لتسريع معالجة المشكلة، أرسل:
+
+1. اسم المستخدم والدور المستخدم.
+2. اسم الشاشة أو رابطها.
+3. وصفًا مختصرًا للمشكلة والخطوات التي أدت إليها.
+4. لقطة شاشة أو فيديو إن أمكن.
+5. وقت حدوث المشكلة ونوع الجهاز والمتصفح.
+
+**رابط النسخة التجريبية:** [فتح AquaWash بالعربية](https://aquawash-frontend-production.up.railway.app/ar)
 
 ---
 
 ### English
 
-| | |
-|---|---|
-| **Company name** | _________________________________ |
-| **Contact person** | _________________________________ |
-| **Phone** | _________________________________ |
-| **Email** | _________________________________ |
-| **Website / Address** | _________________________________ |
-| **Support hours** | _________________________________ |
-| **System URL (Production)** | _________________________________ |
-| **System URL (Demo / Staging)** | _________________________________ |
+For support and feedback, contact the AquaWash project representative through the agreed communication channel. To help resolve an issue quickly, provide:
+
+1. The username and role used.
+2. The screen name or URL.
+3. A short description and reproduction steps.
+4. A screenshot or video when possible.
+5. The time of the issue, device type, and browser.
+
+**Trial URL:** [Open AquaWash in English](https://aquawash-frontend-production.up.railway.app/en)
 
 ---
 
 ### ملاحظات إضافية | Additional Notes
 
-_______________________________________________________________________________
-
-_______________________________________________________________________________
-
-_______________________________________________________________________________
+- النسخة الحالية مخصصة للتقييم وقبول المستخدم، وليست اعتمادًا نهائيًا للتشغيل التجاري.
+- يُنصح بتجربة كل دور على حدة وتسجيل الملاحظات مع اسم الشاشة والخطوات التي سبقت المشكلة.
+- يجب تغيير الحسابات التجريبية وكلمات المرور قبل الانتقال إلى الإنتاج.
+- Current deployment is intended for evaluation and user acceptance testing.
+- Test each role separately and report issues with the screen name and reproduction steps.
+- Replace trial accounts and passwords before production go-live.
 
 ---
 

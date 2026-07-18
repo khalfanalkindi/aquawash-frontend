@@ -42,8 +42,8 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <div className="absolute top-4 end-4">
+    <main className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-primary/5 via-background to-accent/5">
+      <div className="absolute top-4 inset-e-4">
         <LanguageSwitcher />
       </div>
       <Card className="w-full max-w-md">
@@ -51,7 +51,7 @@ export default function AdminLoginPage() {
           <div className="mx-auto w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
             <div className="relative">
               <Shirt className="w-10 h-10 text-primary" />
-              <div className="absolute -bottom-1 -end-1 w-5 h-5 rounded-full bg-accent flex items-center justify-center">
+              <div className="absolute -bottom-1 -inset-e-1 w-5 h-5 rounded-full bg-accent flex items-center justify-center">
                 <Monitor className="w-3 h-3 text-accent-foreground" />
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function AdminLoginPage() {
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="absolute end-0 top-0 h-full px-3 hover:bg-transparent"
+                  className="absolute inset-e-0 top-0 h-full px-3 hover:bg-transparent"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (

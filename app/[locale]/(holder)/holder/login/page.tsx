@@ -43,13 +43,13 @@ export default function HolderLoginPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-background p-4">
-      <div className="absolute top-4 end-4">
+      <div className="absolute top-4 inset-e-4">
         <LanguageSwitcher />
       </div>
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -start-1/4 -top-1/4 size-96 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-1/4 -end-1/4 size-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -inset-s-1/4 -top-1/4 size-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -bottom-1/4 -inset-e-1/4 size-96 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
       <Card className="relative w-full max-w-sm border-border shadow-xl">
@@ -94,7 +94,7 @@ export default function HolderLoginPage() {
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="absolute end-0 top-0 h-full px-3 hover:bg-transparent"
+                  className="absolute inset-e-0 top-0 h-full px-3 hover:bg-transparent"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
