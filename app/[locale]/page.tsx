@@ -13,7 +13,6 @@ export default async function HomePage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations('home')
-  const tc = await getTranslations('common')
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background to-secondary">
@@ -74,9 +73,6 @@ export default async function HomePage({
           </Card>
         </div>
 
-        <p className="text-center text-sm text-muted-foreground">
-          {tc('demoCredentials')}: <code className="bg-muted px-2 py-1 rounded">demo / demo</code>
-        </p>
       </div>
     </main>
   )

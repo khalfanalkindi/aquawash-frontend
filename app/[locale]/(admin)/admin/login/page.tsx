@@ -105,10 +105,7 @@ export default function AdminLoginPage() {
             <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
               {isLoading ? tc('signingIn') : tc('signIn')}
             </Button>
-            <div className="space-y-2 text-center">
-              <p className="text-xs text-muted-foreground">
-                {tc('demoCredentials')}: <code className="rounded bg-muted px-1.5 py-0.5">demo / demo</code>
-              </p>
+            <div className="text-center">
               <Link href="/" className="text-xs text-primary hover:underline">
                 {t('backToHome')}
               </Link>
