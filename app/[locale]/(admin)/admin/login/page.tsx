@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from '@/i18n/navigation'
+import { Link, useRouter } from '@/i18n/navigation'
 import { useAuth } from '@/lib/auth-context'
 import { useTranslations } from 'next-intl'
 import { Shirt, Eye, EyeOff, Monitor } from 'lucide-react'
@@ -105,9 +105,14 @@ export default function AdminLoginPage() {
             <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
               {isLoading ? tc('signingIn') : tc('signIn')}
             </Button>
-            <p className="text-xs text-center text-muted-foreground">
-              {tc('demoCredentials')}: <code className="bg-muted px-1.5 py-0.5 rounded">demo / demo</code>
-            </p>
+            <div className="space-y-2 text-center">
+              <p className="text-xs text-muted-foreground">
+                {tc('demoCredentials')}: <code className="rounded bg-muted px-1.5 py-0.5">demo / demo</code>
+              </p>
+              <Link href="/" className="text-xs text-primary hover:underline">
+                {t('backToHome')}
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>

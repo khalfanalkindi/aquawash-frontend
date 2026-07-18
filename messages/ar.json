@@ -63,7 +63,8 @@
     "enterUsername": "أدخل اسم المستخدم",
     "enterPassword": "أدخل كلمة المرور",
     "invalidCredentials": "اسم المستخدم أو كلمة المرور غير صحيحة",
-    "errorOccurred": "حدث خطأ. يرجى المحاولة مرة أخرى."
+    "errorOccurred": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "backToHome": "العودة للرئيسية"
   },
   "nav": {
     "platform": "المنصة",

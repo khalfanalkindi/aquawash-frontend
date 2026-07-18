@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from '@/i18n/navigation'
+import { Link, useRouter } from '@/i18n/navigation'
 import { useAuth } from '@/lib/auth-context'
 import { useTranslations } from 'next-intl'
 import { Droplets, Eye, EyeOff, Loader2 } from 'lucide-react'
@@ -117,9 +117,14 @@ export default function HolderLoginPage() {
               {isLoading ? tc('signingIn') : tc('signIn')}
             </Button>
 
-            <p className="text-center text-xs text-muted-foreground">
-              {tc('demoCredentials')}: <code className="rounded bg-muted px-1.5 py-0.5 font-mono">demo / demo</code>
-            </p>
+            <div className="space-y-2 text-center">
+              <p className="text-xs text-muted-foreground">
+                {tc('demoCredentials')}: <code className="rounded bg-muted px-1.5 py-0.5 font-mono">demo / demo</code>
+              </p>
+              <Link href="/" className="text-xs text-primary hover:underline">
+                {t('backToHome')}
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>

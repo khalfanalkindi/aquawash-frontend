@@ -63,7 +63,8 @@
     "enterUsername": "Enter username",
     "enterPassword": "Enter password",
     "invalidCredentials": "Invalid username or password",
-    "errorOccurred": "An error occurred. Please try again."
+    "errorOccurred": "An error occurred. Please try again.",
+    "backToHome": "Back to home"
   },
   "nav": {
     "platform": "Platform",
