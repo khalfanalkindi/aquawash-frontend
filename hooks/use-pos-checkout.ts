@@ -86,8 +86,10 @@ export function usePosCheckout() {
 
       toast.success(locale === 'ar' ? 'تم إتمام الطلب' : 'Order completed')
       return invoice
-    } catch {
-      toast.error(locale === 'ar' ? 'فشل إتمام الطلب' : 'Checkout failed')
+    } catch (error) {
+      const fallback = locale === 'ar' ? 'فشل إتمام الطلب' : 'Checkout failed'
+      const detail = error instanceof Error ? error.message : ''
+      toast.error(detail ? `${fallback}: ${detail}` : fallback)
       return null
     } finally {
       setIsCheckingOut(false)

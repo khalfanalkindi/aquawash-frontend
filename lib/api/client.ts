@@ -111,10 +111,19 @@ async function parseErrorResponse(response: Response): Promise<ApiError> {
   } catch {
     errorBody = await response.text()
   }
-  const message =
-    typeof errorBody === 'object' && errorBody !== null && 'detail' in errorBody
-      ? String((errorBody as { detail: unknown }).detail)
-      : `Request failed (${response.status})`
+  let message = `Request failed (${response.status})`
+  if (typeof errorBody === 'object' && errorBody !== null) {
+    if ('detail' in errorBody) {
+      message = String((errorBody as { detail: unknown }).detail)
+    } else {
+      const firstError = Object.entries(errorBody)[0]
+      if (firstError) {
+        const [field, value] = firstError
+        const detail = Array.isArray(value) ? value.join(', ') : String(value)
+        message = `${field}: ${detail}`
+      }
+    }
+  }
   return new ApiError(response.status, message, errorBody)
 }
 

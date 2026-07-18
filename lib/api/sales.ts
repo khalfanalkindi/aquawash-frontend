@@ -54,6 +54,10 @@ export async function fetchInvoices(branchId?: string) {
   return mapList(data, mapInvoice)
 }
 
+function decimalAmount(value: number | undefined): string {
+  return (value ?? 0).toFixed(3)
+}
+
 export async function createInvoice(data: CreateInvoiceRequest) {
   const body = {
     branch_id: toNumId(data.branch_id),
@@ -63,9 +67,9 @@ export async function createInvoice(data: CreateInvoiceRequest) {
     items: data.items.map((item) => ({
       product_id: toNumId(item.product_id),
       quantity: item.quantity,
-      line_discount: item.line_discount ?? 0,
+      line_discount: decimalAmount(item.line_discount),
     })),
-    discount: data.discount,
+    discount: decimalAmount(data.discount),
     payment_method: data.payment_method,
     notes: data.notes ?? '',
     status: data.status ?? 'completed',
