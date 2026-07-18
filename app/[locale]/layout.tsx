@@ -71,7 +71,7 @@ export default async function LocaleLayout({
             </AuthProvider>
           </AppProviders>
         </NextIntlClientProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.VERCEL === '1' && <Analytics />}
         <div id="receipt-print-root" className="hidden print:block" aria-hidden="true" />
       </body>
     </html>

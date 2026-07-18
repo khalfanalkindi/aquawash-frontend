@@ -1,7 +1,9 @@
 import type { Locale } from '@/i18n/routing'
 import { apiLocaleHeader } from '@/lib/localized'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000/api'
+const API_BASE = (
+  process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000/api'
+).replace(/\/+$/, '')
 
 const TOKEN_KEY = 'aquawash_access_token'
 const REFRESH_KEY = 'aquawash_refresh_token'
